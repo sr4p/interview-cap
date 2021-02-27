@@ -14,6 +14,8 @@
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
     <div class="container mt-3">
 
+        <% if (jokes.length > 0) { %>
+
 
         <% jokes.forEach((joke, index) => { %>
             <ul class="list-group">
@@ -39,6 +41,10 @@
             </ul>
             <br>
         <% }) %>
+
+        <% } else { %>
+            <p class="text-center">No joke found.</p>
+        <% } %>
     
 
     <div class="input-group mb-3">
