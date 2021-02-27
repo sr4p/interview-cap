@@ -27,13 +27,13 @@
                     </form>
 
                     <form class="float-end" action="/<%=joke._id%>/dislike" method="POST" >
-                        <button type="submit"><a class="iconify " data-icon="bx:bxs-dislike" data-inline="false" style="width: 40px; height: 40px;"></a> </button>  
+                        <button type="submit"><a class="iconify " data-icon="bx:bxs-dislike" data-inline="false" style="width: 40px; height: 40px;"></a><%= joke.ratings.dislike %></button>  
                     </form>
                     
 
 
                     <form class="float-end" action="/<%=joke._id%>/like" method="POST" >
-                        <button type="submit"><a class="iconify" data-icon="bx:bxs-like" data-inline="false" style="width: 40px; height: 40px;"></a></button>  
+                        <button type="submit"><%= joke.ratings.like %><a class="iconify" data-icon="bx:bxs-like" data-inline="false" style="width: 40px; height: 40px;"></a></button>  
                     </form>
                     
                     
