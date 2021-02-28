@@ -1,0 +1,121 @@
+/POST /registerMarathon
+
+*Body
+_________________________________________________
+profile: {
+    prefix:'นาย',
+    name_th:"สิรวิชย์",
+    surname_th:'ราญรอน',
+    name_eng:'Sirawit',
+    surname_eng:'Ranron',
+    birth:"1998-08-15T18:30:00.000+00:00",
+    email:'srsai.sr4p@hotmail.com',
+    identification_number:'12121233453452',
+    address:{
+        "number":"94",
+        "moo":"4",
+        "sub_district":"แสนสุข",
+        "district":"แสนสุข",
+        "province":'ชลบุรี',
+        "zip":'20130'
+    },
+    tel:'0891234756',
+    img: "****",
+    bib:'SR4P24'
+},
+history_marathon : [{
+    place: 'บางบัวทอง มาราธอน',
+    time_run:'55 minute',
+},{
+    place: 'แสนสุข มาราธอน',
+    time_run:'47 minute',
+}],
+sos : [{
+    name: 'อุ้งอิ๋ง',
+    surname: 'ไวไว',
+    relations: 'เพื่อน',
+    sos_tel: '0891234567'
+},{
+    name: 'อิ่มมะ',
+    surname: 'มาม่า',
+    relations: 'เพื่อน',
+    sos_tel: '0812348866'
+}],
+    
+medical_info : {
+    blood_type:'B',
+    drug_allergy:[{
+        medicine_name:'paracentamon'
+    }],
+    congenital_disease: [{
+        disease_name :'Trypanophobia'
+    }],
+    surgical_history: [{
+        surgical_position :'heart',
+        surgical_date :"2020-06-02T18:30:00.000+00:00",
+    }],
+    pregnant: false,
+    medicine_regular: [{
+        medicine_name:'Opioid'
+    }],
+    hurt_marathon:true,
+    exercise:true,
+    disorder_exercise:true,
+},
+shirt : {
+    size: 'XL'
+}
+_________________________________________________
+
+*Authentication
+    - Basic Authentication : user/password
+    - OAuth (Open Authentication Standard) : เข้าถึงข้อมุล
+    - JSON web token (jwt) : ระบุตัวตนของ client
+
+
+_________________________________________________
+
+*Pseudocodes
+
+/POST form/personal
+/POST form/applicant
+/POST form/emergency
+/POST form/medical
+/POST form/souvenir
+/POST /registerMarathon
+
+
+1    START
+
+2    INPUT field Personal_info;
+3    Validate INPUT field Personal_info;
+4    IF INPUT=err THEN 2
+5     /POST form/personal
+
+6    INPUT field Applicant;
+7    Validate INPUT field Applicant;
+8    IF INPUT=err THEN 6
+9    /POST form/applicant
+
+10    INPUT field Emergency_contact;
+11    Validate INPUT field Emergency contact;
+12    IF INPUT=err THEN 10
+13    /POST form/emergency
+
+14    INPUT field Medical_information;
+15    Validate INPUT field Medical information;
+16    INPUT=err THEN 14
+17    /POST form/medical
+
+18    INPUT field Souvenir;
+19    Validate INPUT field Souvenir;
+20    IF INPUT=err THEN 18
+21    /POST form/souvenir
+
+22     /GET form/*
+23     Validate/Check DATA
+24     /POST form/registerMarathon
+
+25     END
+
+

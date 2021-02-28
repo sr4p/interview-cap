@@ -14,7 +14,7 @@ app.get('/', async (req, res) => {
     res.send(en)
 })
 
-app.post('/register', async (req, res) => {
+app.post('/registerMarathon', async (req, res) => {
     const entrants = new Entrant({
         
         profile: {
