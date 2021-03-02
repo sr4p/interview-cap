@@ -12,11 +12,10 @@
 <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <a href="/logout" class="float-end">Logout</a>
     <div class="container mt-3">
         <h1 class="text-center p-3">J O K E</h1>
         <% if (jokes.length > 0) { %>
-
-
         <% jokes.forEach((joke, index) => { %>
             <ul class="list-group">
                 <li class="list-group-item ">
@@ -27,13 +26,23 @@
                     </form>
 
                     <form class="float-end" action="/<%=joke._id%>/dislike" method="POST" >
-                        <button type="submit"><a class="iconify " data-icon="bx:bxs-dislike" data-inline="false" style="width: 40px; height: 40px;"></a><%= joke.ratings.dislike %></button>  
+                        
+                        <% if (joke.ratings.dislike ==  0) { %>
+                            <button type="submit"><a class="iconify " data-icon="bx:bxs-dislike" data-inline="false" style="width: 40px; height: 40px;"></a></button>
+                        <% } else { %>
+                            <button type="submit"><a class="iconify " data-icon="bx:bxs-dislike" data-inline="false" style="width: 40px; height: 40px;"></a><%= joke.ratings.dislike %></button>
+                        <% } %>
                     </form>
                     
 
 
                     <form class="float-end" action="/<%=joke._id%>/like" method="POST" >
-                        <button type="submit"><%= joke.ratings.like %><a class="iconify" data-icon="bx:bxs-like" data-inline="false" style="width: 40px; height: 40px;"></a></button>  
+                        <button type="submit">
+                            <% if (joke.ratings.like ==  0) { %>
+                                <a class="iconify" data-icon="bx:bxs-like" data-inline="false" style="width: 40px; height: 40px;"></a></button>
+                            <% } else { %>
+                                <%= joke.ratings.like %><a class="iconify" data-icon="bx:bxs-like" data-inline="false" style="width: 40px; height: 40px;"></a></button>
+                            <% } %>
                     </form>
                     
                     
